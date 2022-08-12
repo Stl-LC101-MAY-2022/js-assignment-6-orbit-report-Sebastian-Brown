@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Satellite } from './satellite';
 
 @Component({
@@ -11,13 +11,14 @@ export class AppComponent {
 
   sourceList: Satellite[];
   displayList: Satellite[];
-
+  
 	constructor() {
 		this.sourceList = [];
 		this.displayList = [];
-		let satellitesUrl = 'https://handlers.education.launchcode.org/static/satellites.json';
+		let satellitesUrl = "https://handlers.education.launchcode.org/static/satellites.json";
 
-		window.fetch(satellitesUrl).then(function (response) {
+
+			window.fetch(satellitesUrl).then(function (response) {
 			response.json().then(function (data) {
 
 				let fetchedSatellites = data.satellites;
@@ -31,11 +32,12 @@ export class AppComponent {
 
 				 // make a copy of the sourceList to be shown to the user
 				 this.displayList = this.sourceList.slice(0);
-	  
 			}.bind(this));
 		}.bind(this));
 
 	}
+
+
 
 	search(searchTerm: string): void {
 		let matchingSatellites: Satellite[] = [];
